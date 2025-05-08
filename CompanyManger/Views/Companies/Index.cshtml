@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CompanyManger.Core.Models.CompanyModel>
+
+<h1>Companies</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr>
+                <td>@company.Id</td>
+                <td>@company.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@company.Id" class="btn btn-warning">Edit</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@company.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
